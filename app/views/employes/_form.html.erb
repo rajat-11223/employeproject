@@ -1,0 +1,84 @@
+<%#= render 'form', employe: @newemploye %>
+
+
+
+
+
+
+<div class="container">
+<div class="row">
+ <div class="col-md-8"> 
+
+
+<%= form_for(@employe) do |f| %>
+
+<% if @employe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@employe.errors.count, "error") %> prohibited this employe from being saved:</h2>
+
+      <ul>
+        <% @employe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Employe Name</label>
+     
+    <%= f.text_field :name , class: "form-control", placeholder: "Enter Title", required: 'true' %>
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">City</label></br>
+    <%= f.collection_select :city_id,@allcity,:id, :name,{ :prompt => 'Select City' },{ class: "form-control add_city", required: "true",:onchange=>"myFunction()"} %>
+  </div>
+  <div class="employe_in_city"></div>
+
+<div class="form-group">
+    
+   <span> <%= f.check_box :willing_to_relocate, class: "form-control" %>
+    <label for="exampleInputEmail1">Willing to relocate</label></span>
+    
+ </div>
+<div class="form-group">
+    <label for="exampleInputPassword1">City</label></br>
+    <%= f.file_field :image , class: "form-control" %>
+  </div>
+  
+  
+    <%= f.submit "save", :class => "btn btn-primary" %>
+<% end %>
+
+
+
+</div>
+
+</div>
+</div>
+<script type="text/javascript">
+  
+function myFunction() {
+  var cityid = document.getElementById("employe_city_id").value;
+  //alert(cityid);
+  //document.getElementById("demo").innerHTML = "You selected: " + x;
+
+
+ $.ajax({
+              beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+              type:'post',
+              async: true,
+
+              url: '/employe_city',
+              data: {city_id: cityid}
+
+
+            });
+
+
+}
+
+</script>
+

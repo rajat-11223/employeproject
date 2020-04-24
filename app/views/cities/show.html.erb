@@ -1,0 +1,39 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <center><h1>City Details</h1></center>      
+    
+  </div>
+</div>
+
+
+
+<div class="container">
+<div class="row">
+ <div class="col-md-6"> 
+ <h3>City: <%= @showcity.name.capitalize %></h3>    
+ <h3>Total Employes: <%= @cityemployes.count %></h3>    
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>S.no</th>
+        <th>Name</th>
+        <th>Manager's Name</th>
+        <th>Manager's city</th>
+      </tr>
+    </thead>
+    <tbody>
+          <% @cityemployes.each do |cc| %>
+      <tr>
+        <td><%= 1 %></td>
+        <td><%= cc.name %></td>
+        <td><%= cc.manager_id.present? ? Employe.find(cc.manager_id).name : '--'   %></td>
+        <td><%= cc.manager_id.present? ? Employe.find(cc.manager_id).city.name : '--'   %></td>
+      </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>
+
+</div>
+</div>

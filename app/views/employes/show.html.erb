@@ -1,0 +1,65 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <center><h1>Employe Details</h1></center>      
+    
+  </div>
+</div>
+
+
+
+<div class="container">
+<div class="row">
+ <div class="col-md-6"> 
+ <h3>Employe: <%= @employe.name.capitalize %></h3>  
+ <% if  @employe.image.present? %> 
+ <%= image_tag(@employe.image.url, :class => "rounded-circle img_size mb-5") %>
+ <% else %>
+
+ <%= image_tag("/assets/nnnn.jpg", :class => "rounded-circle img_size mb-5") %>
+ <% end %>
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>City</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @employe.id %></td>
+        <td><%= @employe.name  %></td>
+        <td><%= @employe.city.name  %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col-md-6">  
+<% @subordinate = @employe.subordinates %> 
+<h3>Sub-Ordinates: <%= @subordinate.count %></h3>
+<table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>City</th>
+      </tr>
+    </thead>
+    <tbody>
+    	
+
+    	<% @subordinate.each do |bb|%> 
+      <tr>
+        <td><%= bb.id %></td>
+        <td><%= bb.name  %></td>
+        <td><%= bb.city.name  %></td>
+       
+      </tr>
+      <% end %>
+      
+    </tbody>
+  </table>
+
+</div>
+</div>
+</div>

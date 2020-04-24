@@ -1,0 +1,35 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <center><h1>Cities</h1></center>      
+    
+  </div>
+</div>
+
+
+<div class="container">
+      
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>S.no</th>
+         <th>City</th>
+        <th>Employes</th>
+       
+        
+      </tr>
+    </thead>
+    <tbody>
+      <% @cities.each do |bb| %>
+      <tr>
+        <td><%= @cities.index(bb) + 1 %></td>
+        <td><%=  link_to bb.name, bb , class: "employ_link" %></td>
+        <td><%= bb.employes.count %></td>
+       
+      </tr>
+      <% end %>
+      
+    </tbody>
+  </table>
+  <%#= will_paginate @cities %>
+</div>
+

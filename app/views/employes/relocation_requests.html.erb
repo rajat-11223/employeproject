@@ -1,0 +1,36 @@
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <center><h1>Employe Relocate Request</h1></center>      
+    
+  </div>
+</div>
+
+
+
+<div class="container">
+<div class="row">
+ <div class="col-md-8"> 
+ <h3>Relocation requests: <%= @relocate.count %></h3>    
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>City</th>
+      </tr>
+    </thead>
+    <tbody>
+    	<% @relocate.each do |vv| %>
+      <tr>
+        <td><%= vv.id %></td>
+        <td><%= link_to vv.name, edit_employe_path(vv), class: "employ_link"  %></td>
+        <td><%= vv.city.name  %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+</div>
+</div>

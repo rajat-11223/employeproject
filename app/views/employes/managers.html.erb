@@ -1,0 +1,37 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <center><h1>Manager</h1></center>      
+    
+  </div>
+</div>
+
+
+<div class="container">
+      
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>S.no</th>
+        <th>Manager Name</th>
+        <th>City</th>
+        <th>SubCordinates</th>
+      </tr>
+    </thead>
+    <tbody>
+    	<% @manager.each do |bb| %>
+      <tr>
+        <td><%= @manager.index(bb) + 1 %></td>
+        <td><%= link_to bb.name, employe_path(bb), class: "employ_link" %></td>
+        <td><%=  bb.city.name %></td>
+        <td><%= bb.subordinates.pluck(:name).join(',')  %>
+              
+              
+        </td>
+      </tr>
+      <% end %>
+      
+    </tbody>
+  </table>
+  <%= will_paginate @manager %>
+</div>
+
