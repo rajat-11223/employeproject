@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'faker'
 gem 'populator', github: 'fulvi0/populator'
 gem 'will_paginate', '~> 3.1.0' 
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
